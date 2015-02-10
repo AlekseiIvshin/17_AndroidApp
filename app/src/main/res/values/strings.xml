@@ -10,4 +10,6 @@
     <string name="title_activity_display_message">DisplayMessageActivity</string>
     <string name="setTimer">Start timer</string>
     <string name="enter_seconds_for_timer">Enter seconds for timer</string>
+    <string name="title_activity_result">ResultActivity</string>
+
 </resources>
