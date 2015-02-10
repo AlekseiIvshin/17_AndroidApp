@@ -1,41 +1,35 @@
 package com.example.aleksei_ivshin.firstapp;
 
-import android.content.Intent;
-import android.provider.AlarmClock;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-import android.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements HeadlinesFragment.OnHeadlineSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if(findViewById(R.id.fragment_left_container) != null){
-            if(savedInstanceState != null){
+        if (findViewById(R.id.fragment_left_container) != null) {
+            if (savedInstanceState != null) {
                 return;
             }
 
-            ProducerFragment producerFragment = new ProducerFragment();
+            HeadlinesFragment headlinesFragment = new HeadlinesFragment();
 
-            getSupportFragmentManager().beginTransaction().add(R.id.fragment_left_container,producerFragment).commit();
-        }
-        if(findViewById(R.id.fragment_rigth_container) != null){
-            if(savedInstanceState != null){
-                return;
-            }
-
-            ConsumerFragment consumerFragment = new ConsumerFragment();
-
-            getSupportFragmentManager().beginTransaction().add(R.id.fragment_rigth_container,consumerFragment).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment_left_container, headlinesFragment).commit();
         }
     }
 
+    @Override
+    public void onArticleSelected(int position) {
+        ArticleFragment articleFragment = (ArticleFragment) getSupportFragmentManager().findFragmentById(R.id.article_fragment);
+        if (articleFragment != null) {
+            articleFragment.setData(position + "");
+        } else {
+            ArticleFragment newArticleFragment = new ArticleFragment();
+            newArticleFragment.setData("New article");
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_rigth_container, newArticleFragment).addToBackStack(null).commit();
+        }
+    }
 }
