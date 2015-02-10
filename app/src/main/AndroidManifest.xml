@@ -3,7 +3,7 @@
     package="com.example.aleksei_ivshin.firstapp" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="21" />
 
     <uses-permission

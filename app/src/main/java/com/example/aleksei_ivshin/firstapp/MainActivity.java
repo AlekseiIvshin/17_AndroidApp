@@ -2,6 +2,7 @@ package com.example.aleksei_ivshin.firstapp;
 
 import android.content.Intent;
 import android.provider.AlarmClock;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,7 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends FragmentActivity {
 
     public final static String EXTRA_MESSAGE = "com.example.aleksei_ivshin.firstapp.MESSAGE";
 
@@ -41,26 +42,5 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void sendMessage(View view){
-        Intent intent = new Intent(this,DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.edit_message);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
-    }
-
-    public void setTimer(View view){
-        EditText editText = (EditText) findViewById(R.id.edit_message);
-        EditText secondsHolder = (EditText) findViewById(R.id.seconds_for_timer);
-        int seconds = Integer.getInteger(secondsHolder.getText().toString(),10);
-        Intent intent = new Intent(AlarmClock.ACTION_SET_TIMER)
-                .putExtra(AlarmClock.EXTRA_MESSAGE,editText.getText().toString())
-                .putExtra(AlarmClock.EXTRA_LENGTH,seconds)
-                .putExtra(AlarmClock.EXTRA_SKIP_UI,true);
-        if(intent.resolveActivity(getPackageManager())!= null){
-            startActivity(intent);
-        }
     }
 }
