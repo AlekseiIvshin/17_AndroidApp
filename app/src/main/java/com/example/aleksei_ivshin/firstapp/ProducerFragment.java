@@ -22,6 +22,4 @@ public class ProducerFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_producer, container, false);
     }
 
-    public void sendMessage(View view){
-    }
 }

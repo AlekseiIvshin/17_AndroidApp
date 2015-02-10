@@ -17,5 +17,14 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if(findViewById(R.id.fragment_container) != null){
+            if(savedInstanceState != null){
+                return;
+            }
+
+            ProducerFragment producerFragment = new ProducerFragment();
+
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,producerFragment).commit();
+        }
     }
 }
