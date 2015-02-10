@@ -8,4 +8,6 @@
     <string name="title_activity_second">SecondActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_display_message">DisplayMessageActivity</string>
+    <string name="setTimer">Start timer</string>
+    <string name="enter_seconds_for_timer">Enter seconds for timer</string>
 </resources>
